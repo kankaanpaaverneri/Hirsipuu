@@ -18,7 +18,7 @@ class GameManager
         ~GameManager();
     private:
         HangingTree hangingTree;
-        const int failStateLUT[6]
+        const int failStateLUT[7]
         {
             FailState::fail1, FailState::fail2, FailState::fail3,
             FailState::fail4, FailState::fail5, FailState::fail6

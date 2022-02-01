@@ -21,13 +21,13 @@ void GameManager::runGame()
         addUsedLetters(word);
         system("clear");
         std::wcout << std::endl;
-        static int failCounter {0};
+        static int failCounter {-1};
         if(!isAnswerCorrect(word))
         {
-            revealHangingTree(failStateLUT[failCounter]);
             failCounter++;
         }
-        if(failCounter == FailState::fail6)
+        revealHangingTree(failStateLUT[failCounter]);
+        if(failCounter == FailState::fail5)
         {
             std::wcout << L"HÄVISIT PELIN" << std::endl;
             break;
@@ -55,14 +55,14 @@ void GameManager::enterUserInput(Word& word)
 bool GameManager::isAnswerCorrect(Word& word)
 {
     bool isCharacterMatch {false};
-    for(const wchar_t& realCh : word.getRealWord())
+    for(size_t i {0}; i < word.getUserInput().length()-1; i++)
     {
-        for(size_t i {0}; i < word.getUserInput().length(); i++)
+        for(const wchar_t& realCh : word.getRealWord())
         {
             if(word.getUserInput().at(i) == realCh)
             {
                 isCharacterMatch = true;
-                word.revealCharacters(word.getUserInput().at(i));
+                word.revealCharacters(realCh);
             }
         }
     }
