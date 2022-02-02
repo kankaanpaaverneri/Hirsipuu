@@ -7,7 +7,7 @@
 
 enum FailState : int
 {
-    fail1=1, fail2=2, fail3=3,
+    fail0=0, fail1=1, fail2=2, fail3=3,
     fail4=4, fail5=5, fail6=6
 };
 
@@ -20,7 +20,7 @@ class GameManager
         HangingTree hangingTree;
         const int failStateLUT[7]
         {
-            FailState::fail1, FailState::fail2, FailState::fail3,
+            FailState::fail0, FailState::fail1, FailState::fail2, FailState::fail3,
             FailState::fail4, FailState::fail5, FailState::fail6
         };
     
